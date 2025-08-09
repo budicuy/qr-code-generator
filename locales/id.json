@@ -1,13 +1,12 @@
-
 {
-  "header.title": "QR Code Generator Pro",
+  "header.title": "QR Code Generator",
   "header.myProjects": "Proyek Saya",
   "header.github_aria": "Lihat di GitHub",
   "header.fileManager_aria": "Buka Manajer Proyek",
   "header.profile_aria": "Buka halaman profil",
   "footer.builtWith": "Dibangun dengan React, Tailwind CSS, dan qr-code-styling.",
   "footer.developed_by": "Dikembangkan oleh",
-  
+
   "tabs.type": "Tipe",
   "tabs.design": "Desain",
   "tabs.templates": "Templat",
@@ -75,14 +74,14 @@
   "design.logo.hideDots": "Sembunyikan titik di belakang logo",
   "design.advanced.margin": "Margin Luar (px)",
   "design.advanced.errorCorrection": "Tingkat Koreksi Kesalahan",
-  
+
   "dot_style.square": "Square",
   "dot_style.dots": "Dots",
   "dot_style.rounded": "Rounded",
   "dot_style.extra_rounded": "Extra Rounded",
   "dot_style.classy": "Classy",
   "dot_style.classy_rounded": "Classy Rounded",
-  
+
   "corner_square_style.square": "Square",
   "corner_square_style.dot": "Dot",
   "corner_square_style.extra_rounded": "Extra Rounded",
@@ -98,7 +97,7 @@
   "ecl.M.desc": "Sekitar 15% data dapat dipulihkan.",
   "ecl.Q.desc": "Sekitar 25% data dapat dipulihkan.",
   "ecl.H.desc": "Sekitar 30% data dapat dipulihkan.",
-  
+
   "preview.title": "Pratinjau QR Code",
   "preview.resolution_aria": "Pilih Resolusi",
   "preview.format_aria": "Pilih Format File",
@@ -114,15 +113,15 @@
   "download_ext.jpeg": "JPEG",
   "download_ext.webp": "WEBP",
   "download_ext.svg": "SVG",
-  
+
   "studio.project_loaded": "Proyek \"{name}\" dimuat.",
   "studio.reset_modal.title": "Konfirmasi Reset",
   "studio.reset_modal.body": "Apakah Anda yakin ingin mereset semua pengaturan? Tipe, data, dan kustomisasi desain akan kembali ke default. Perubahan yang belum disimpan akan hilang.",
-  
+
   "modal.confirm.default_button": "Konfirmasi",
   "modal.confirm.reset_button": "Reset",
   "modal.confirm.cancel_button": "Batal",
-  
+
   "fileManager.title": "Manajer Proyek QR",
   "fileManager.close_aria": "Tutup",
   "fileManager.new_folder_placeholder": "Nama Folder Baru",
