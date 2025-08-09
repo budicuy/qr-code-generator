@@ -8,40 +8,40 @@ import { debounce, formatVCard, formatWifi } from '../lib/helpers';
 import { useLanguage } from '../context/LanguageContext';
 
 const defaultOptions: QrOptions = {
-    width: 300,
-    height: 300,
-    data: 'https://react.dev',
-    margin: 10,
-    qrOptions: {
-      typeNumber: 0,
-      mode: 'Byte',
-      errorCorrectionLevel: 'Q'
-    },
-    imageOptions: {
-      hideBackgroundDots: true,
-      imageSize: 0.4,
-      margin: 10,
-      crossOrigin: 'anonymous',
-    },
-    dotsOptions: {
-      color: '#000000',
-      type: 'square',
-    },
-    backgroundOptions: {
-      color: '#ffffff',
-    },
-    cornersSquareOptions: {
-      color: '#000000',
-      type: 'square',
-    },
-    cornersDotOptions: {
-      color: '#000000',
-      type: 'square',
-    },
-    image: null
+  width: 400,
+  height: 400,
+  data: 'https://react.dev',
+  margin: 0,
+  qrOptions: {
+    typeNumber: 0,
+    mode: 'Byte',
+    errorCorrectionLevel: 'Q'
+  },
+  imageOptions: {
+    hideBackgroundDots: true,
+    imageSize: 0.4,
+    margin: 0,
+    crossOrigin: 'anonymous',
+  },
+  dotsOptions: {
+    color: '#000000',
+    type: 'square',
+  },
+  backgroundOptions: {
+    color: '#ffffff',
+  },
+  cornersSquareOptions: {
+    color: '#000000',
+    type: 'square',
+  },
+  cornersDotOptions: {
+    color: '#000000',
+    type: 'square',
+  },
+  image: null
 };
 
-const QrStudio: React.FC<{setFileManagerOpen: (isOpen: boolean) => void}> = ({setFileManagerOpen}) => {
+const QrStudio: React.FC<{ setFileManagerOpen: (isOpen: boolean) => void }> = ({ setFileManagerOpen }) => {
   const { t } = useLanguage();
   const [qrType, setQrType] = useState<QrType>('url');
   const [qrData, setQrData] = useState<QrData>('https://react.dev');
@@ -65,7 +65,7 @@ const QrStudio: React.FC<{setFileManagerOpen: (isOpen: boolean) => void}> = ({se
         qrInstance.update({ ...newOptions, data: dataString });
       }
     }, 300),
-    [qrInstance] 
+    [qrInstance]
   );
 
   useEffect(() => {
@@ -75,33 +75,33 @@ const QrStudio: React.FC<{setFileManagerOpen: (isOpen: boolean) => void}> = ({se
       setQrInstance(instance);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); 
+  }, []);
 
   useEffect(() => {
     if (qrInstance && qrRef.current) {
-        qrRef.current.innerHTML = ''; // Clear previous QR code
-        qrInstance.append(qrRef.current);
+      qrRef.current.innerHTML = ''; // Clear previous QR code
+      qrInstance.append(qrRef.current);
     }
   }, [qrInstance]);
 
   useEffect(() => {
     debouncedUpdate(options, qrData, qrType);
   }, [options, qrData, qrType, debouncedUpdate]);
-  
+
   const handleDownload = useCallback((extension: Extension, size: number) => {
     if (qrInstance) {
-        const downloadOptions = {
-            name: 'qr-code',
-            extension: extension,
-        };
-        // Create a temporary options object for download to override size
-        const tempOptionsForDownload = {
-            ...qrInstance._options,
-            width: size,
-            height: size,
-        };
-        const tempInstance = new window.QRCodeStyling(tempOptionsForDownload);
-        tempInstance.download(downloadOptions);
+      const downloadOptions = {
+        name: 'qr-code',
+        extension: extension,
+      };
+      // Create a temporary options object for download to override size
+      const tempOptionsForDownload = {
+        ...qrInstance._options,
+        width: size,
+        height: size,
+      };
+      const tempInstance = new window.QRCodeStyling(tempOptionsForDownload);
+      tempInstance.download(downloadOptions);
     }
   }, [qrInstance]);
 
@@ -116,7 +116,7 @@ const QrStudio: React.FC<{setFileManagerOpen: (isOpen: boolean) => void}> = ({se
     setQrType('url');
     setQrData('https://react.dev');
     setOptions(defaultOptions);
-    
+
     if (qrInstance) {
       // Force immediate update with default options, bypassing debounce
       qrInstance.update({
@@ -124,10 +124,10 @@ const QrStudio: React.FC<{setFileManagerOpen: (isOpen: boolean) => void}> = ({se
         data: 'https://react.dev'
       });
     }
-    
+
     setResetModalOpen(false);
   }, [qrInstance]);
-  
+
   // Expose loadProject to FileManager through window object or context
   useEffect(() => {
     (window as any).loadQrProject = loadProject;
@@ -140,24 +140,24 @@ const QrStudio: React.FC<{setFileManagerOpen: (isOpen: boolean) => void}> = ({se
     <>
       <div className="flex flex-col lg:flex-row gap-8">
         <div className="w-full lg:w-[45%] xl:w-2/5">
-          <OptionsPanel 
-              options={options} 
-              setOptions={setOptions} 
-              qrType={qrType}
-              setQrType={setQrType}
-              qrData={qrData}
-              setQrData={setQrData}
+          <OptionsPanel
+            options={options}
+            setOptions={setOptions}
+            qrType={qrType}
+            setQrType={setQrType}
+            qrData={qrData}
+            setQrData={setQrData}
           />
         </div>
         <div className="w-full lg:w-[55%] xl:w-3/5">
-          <PreviewPanel 
-              qrRef={qrRef}
-              handleDownload={handleDownload}
-              qrType={qrType}
-              qrData={qrData}
-              options={options}
-              setFileManagerOpen={setFileManagerOpen}
-              handleReset={() => setResetModalOpen(true)}
+          <PreviewPanel
+            qrRef={qrRef}
+            handleDownload={handleDownload}
+            qrType={qrType}
+            qrData={qrData}
+            options={options}
+            setFileManagerOpen={setFileManagerOpen}
+            handleReset={() => setResetModalOpen(true)}
           />
         </div>
       </div>
