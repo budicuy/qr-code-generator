@@ -1,0 +1,6 @@
+{
+  "name": "QR Code Generator Pro",
+  "description": "Platform canggih untuk membuat QR code yang dapat disesuaikan sepenuhnya. Mendukung berbagai jenis data (URL, vCard, WiFi), templat desain, bingkai kustom, dan manajemen proyek berbasis folder.",
+  "requestFramePermissions": [],
+  "prompt": ""
+}
